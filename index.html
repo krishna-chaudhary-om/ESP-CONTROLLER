@@ -1,20 +1,116 @@
-<div class="hdr-right">
-  <div class="time-display">LOCAL TIME</div>
-  <span id="liveClock">--:--:--</span>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ESP8266 — Thermal & Vibration Controller</title>
 
-  <!-- NEW: ESP CONNECT -->
-  <div style="margin-top:10px;">
-    <input 
-      type="text" 
-      id="espIp" 
-      placeholder="ESP IP (e.g. 192.168.1.23)" 
-      style="padding:4px 6px; font-size:10px; width:140px; border-radius:4px; border:1px solid #444; background:#111; color:#fff;"
-    >
-    <button 
-      onclick="connectESP()" 
-      style="padding:4px 8px; font-size:10px; margin-left:4px; border:none; border-radius:4px; background:#4ade80; color:#000; cursor:pointer;"
-    >
-      CONNECT
-    </button>
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+<div class="wrap">
+
+  <!-- HEADER -->
+  <div class="hdr">
+    <div class="hdr-left">
+      <div class="chip-badge">
+        <span class="chip-dot" id="liveDot"></span>
+        <span id="liveLabel">ESP8266</span>
+      </div>
+      <div class="page-title">Thermal &<br>Vibration</div>
+      <div class="page-sub">WIFI CONTROLLER — NODE MCU</div>
+    </div>
+
+    <div class="hdr-right">
+      <div class="time-display">LOCAL TIME</div>
+      <span id="liveClock">--:--:--</span>
+
+      <!-- ESP CONNECT -->
+      <div style="margin-top:10px;">
+        <input 
+          type="text" 
+          id="espIp" 
+          placeholder="ESP IP (192.168.x.x)"
+          style="padding:4px 6px; font-size:10px; width:140px; border-radius:4px; border:1px solid #444; background:#111; color:#fff;"
+        >
+        <button 
+          onclick="connectESP()" 
+          style="padding:4px 8px; font-size:10px; margin-left:4px; border:none; border-radius:4px; background:#4ade80; color:#000; cursor:pointer;"
+        >
+          CONNECT
+        </button>
+      </div>
+    </div>
   </div>
+
+  <!-- HEATING CARD -->
+  <div class="card" id="heatCard">
+    <div class="card-hdr">
+      <div class="card-id">
+        <div class="icon-box">🔥</div>
+        <div>
+          <div class="card-name">Heating Pad</div>
+          <div class="card-state off" id="heatState">OFFLINE</div>
+        </div>
+      </div>
+
+      <div class="heat-tog">
+        <label class="tog">
+          <input type="checkbox" id="heatSwitch" onchange="toggleHeat()">
+          <div class="tog-track"><div class="tog-knob"></div></div>
+        </label>
+      </div>
+    </div>
+
+    <div class="temp-big">
+      <span class="temp-num" id="tempNum">--</span>
+      <span class="temp-sym">°C</span>
+    </div>
+
+    <input type="range" id="tempSlider" min="20" max="40" value="30"
+      disabled oninput="onTempSlide(this.value)" onchange="commitTemp(this.value)">
+  </div>
+
+  <!-- VIBRATION CARD -->
+  <div class="card" id="vibCard">
+    <div class="card-hdr">
+      <div class="card-id">
+        <div class="icon-box">📳</div>
+        <div>
+          <div class="card-name">Vibration Motor</div>
+          <div class="card-state off" id="vibState">OFFLINE</div>
+        </div>
+      </div>
+
+      <div class="vib-tog">
+        <label class="tog">
+          <input type="checkbox" id="vibSwitch" onchange="toggleVib()">
+          <div class="tog-track"><div class="tog-knob"></div></div>
+        </label>
+      </div>
+    </div>
+
+    <div class="vib-modes">
+      <button onclick="setMode('LOW',25)">LOW</button>
+      <button onclick="setMode('MED',50)">MED</button>
+      <button onclick="setMode('HIGH',75)">HIGH</button>
+      <button onclick="setMode('MAX',100)">MAX</button>
+    </div>
+  </div>
+
+  <!-- LOG -->
+  <div class="log-card">
+    <div class="log-title">ACTIVITY LOG</div>
+    <div class="log-scroll">
+      <div id="logOut"></div>
+    </div>
+  </div>
+
 </div>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
