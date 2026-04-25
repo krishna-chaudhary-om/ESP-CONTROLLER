@@ -1,10 +1,264 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap');
 
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
-/* ALL YOUR CSS EXACTLY SAME */
 :root{
   --bg:#0b0c0e;
-  --s1:#131519;
+  --card:#131519;
+  --card2:#1b1d22;
+  --border:#2a2d34;
 
+  --text:#eceef2;
+  --muted:#6b7280;
+
+  --heat:#f97316;
+  --vib:#38bdf8;
+  --ok:#4ade80;
+
+  --mono:'Space Mono', monospace;
+  --head:'Syne', sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--mono);
+  display:flex;
+  justify-content:center;
+}
+
+.wrap{
+  width:100%;
+  max-width:500px;
+  padding:20px;
+}
+
+/* HEADER */
+.hdr{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:25px;
+}
+
+.page-title{
+  font-family:var(--head);
+  font-size:26px;
+  font-weight:800;
+}
+
+.page-sub{
+  font-size:11px;
+  color:var(--muted);
+}
+
+.time-display{
+  font-size:10px;
+  color:var(--muted);
+}
+
+#liveClock{
+  font-size:16px;
+  font-weight:700;
+}
+
+/* CONNECT INPUT */
+#espIp{
+  margin-top:8px;
+}
+
+/* CARD */
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:16px;
+  margin-bottom:15px;
+  transition:0.3s;
+}
+
+.card.on-heat{
+  border-color:var(--heat);
+}
+
+.card.on-vib{
+  border-color:var(--vib);
+}
+
+.card-hdr{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.card-name{
+  font-family:var(--head);
+  font-size:16px;
+}
+
+.card-state{
+  font-size:10px;
+  color:var(--muted);
+}
+
+.card-state.on{
+  color:var(--ok);
+}
+
+/* ICON */
+.icon-box{
+  width:34px;
+  height:34px;
+  border-radius:8px;
+  background:var(--card2);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-right:10px;
+}
+
+/* TEMP DISPLAY */
+.temp-big{
+  display:flex;
+  align-items:baseline;
+  margin-top:10px;
+}
+
+.temp-num{
+  font-size:50px;
+  font-weight:800;
+  font-family:var(--head);
+}
+
+.temp-sym{
+  margin-left:5px;
+  color:var(--muted);
+}
+
+/* SLIDER */
+input[type=range]{
+  width:100%;
+  margin-top:10px;
+}
+
+/* TOGGLE */
+.tog{
+  position:relative;
+  width:50px;
+  height:25px;
+}
+
+.tog input{
+  display:none;
+}
+
+.tog-track{
+  background:#333;
+  border-radius:15px;
+  height:100%;
+  width:100%;
+  position:absolute;
+}
+
+.tog-knob{
+  width:20px;
+  height:20px;
+  background:#aaa;
+  border-radius:50%;
+  position:absolute;
+  top:2px;
+  left:3px;
+  transition:0.2s;
+}
+
+.tog input:checked ~ .tog-track .tog-knob{
+  left:25px;
+  background:var(--ok);
+}
+
+/* BUTTONS */
+button{
+  background:var(--card2);
+  border:1px solid var(--border);
+  color:var(--text);
+  padding:8px;
+  margin:5px;
+  border-radius:6px;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+button:hover{
+  border-color:#555;
+}
+
+/* LOG */
+.log-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:10px;
+}
+
+.log-title{
+  font-size:10px;
+  color:var(--muted);
+  margin-bottom:5px;
+}
+
+.log-scroll{
+  max-height:100px;
+  overflow-y:auto;
+}
+
+.log-line{
+  font-size:10px;
+  display:flex;
+  gap:10px;
+}
+
+.log-t{
+  color:#888;
+}
+
+.log-m.ok{
+  color:var(--ok);
+}
+
+.log-m.err{
+  color:red;
+}
+
+.log-m.warn{
+  color:orange;
+}
+
+/* TOAST */
+.toast{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#222;
+  padding:10px 15px;
+  border-radius:8px;
+  opacity:0;
+  transition:0.3s;
+}
+
+.toast.show{
+  opacity:1;
+}
+
+/* RESPONSIVE */
+@media(max-width:480px){
+  .page-title{
+    font-size:22px;
+  }
+
+  .temp-num{
+    font-size:40px;
+  }
 }
