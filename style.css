@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+/* ALL YOUR CSS EXACTLY SAME */
+:root{
+  --bg:#0b0c0e;
+  --s1:#131519;
+
+}
