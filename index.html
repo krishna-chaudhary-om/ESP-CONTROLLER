@@ -1,38 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ESP8266 — Thermal & Vibration Controller</title>
+<div class="hdr-right">
+  <div class="time-display">LOCAL TIME</div>
+  <span id="liveClock">--:--:--</span>
 
-<link rel="stylesheet" href="styles.css">
-</head>
-
-<body>
-<div class="wrap">
-
-  <!-- header -->
-  <div class="hdr">
-    <div class="hdr-left">
-      <div class="chip-badge">
-        <span class="chip-dot" id="liveDot"></span>
-        <span id="liveLabel">ESP8266</span>
-      </div>
-      <div class="page-title">Thermal &<br>Vibration</div>
-      <div class="page-sub">WIFI CONTROLLER — NODE MCU</div>
-    </div>
-    <div class="hdr-right">
-      <div class="time-display">LOCAL TIME</div>
-      <span id="liveClock">--:--:--</span>
-    </div>
+  <!-- NEW: ESP CONNECT -->
+  <div style="margin-top:10px;">
+    <input 
+      type="text" 
+      id="espIp" 
+      placeholder="ESP IP (e.g. 192.168.1.23)" 
+      style="padding:4px 6px; font-size:10px; width:140px; border-radius:4px; border:1px solid #444; background:#111; color:#fff;"
+    >
+    <button 
+      onclick="connectESP()" 
+      style="padding:4px 8px; font-size:10px; margin-left:4px; border:none; border-radius:4px; background:#4ade80; color:#000; cursor:pointer;"
+    >
+      CONNECT
+    </button>
   </div>
-
-  <!-- (ALL YOUR BODY CONTENT SAME — I DID NOT REMOVE ANYTHING) -->
-
 </div>
-
-<div class="toast" id="toast"></div>
-
-<script src="script.js"></script>
-</body>
-</html>
