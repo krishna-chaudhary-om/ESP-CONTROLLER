@@ -1,0 +1,34 @@
+{
+  "name": "esp-controller",
+  "version": "1.0.0",
+  "description": "ESP8266 Web Controller",
+  "main": "script.js",
+  "scripts": {
+    "start": "live-server --port=3000 --open=index.html",
+    "dev": "live-server --port=3000 --open=index.html",
+    "test": "echo \"No tests\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krishna-chaudhary-om/ESP-CONTROLLER.git"
+  },
+  "keywords": [
+    "esp8266",
+    "iot",
+    "web-control"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/krishna-chaudhary-om/ESP-CONTROLLER/issues"
+  },
+  "homepage": "https://github.com/krishna-chaudhary-om/ESP-CONTROLLER#readme",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "node-fetch": "^3.3.2"
+  }
+}

@@ -1,0 +1,299 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+:root{
+  --bg:#0a0a0a;
+  --card:#121212;
+  --border:#2a2a2a;
+
+  --text:#f1f1f1;
+  --muted:#7a7a7a;
+
+  --accent:#ffffff;
+  --heat:#ff7a1a;
+  --vib:#4cc9f0;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Space Mono', monospace;
+  display:flex;
+  justify-content:center;
+}
+
+.wrap{
+  width:100%;
+  max-width:520px;
+  padding:20px;
+}
+
+/* HEADER */
+.hdr{
+  margin-bottom:25px;
+}
+
+.page-title{
+  font-family:'Syne', sans-serif;
+  font-size:18px;
+  letter-spacing:2px;
+  color:#aaa;
+}
+
+.page-sub{
+  font-size:11px;
+  color:var(--muted);
+  margin-top:5px;
+}
+
+/* STATUS DOT */
+.chip-badge{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  float:right;
+}
+
+.chip-dot{
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#444;
+}
+
+.chip-dot.live{
+  background:#4ade80;
+  box-shadow:0 0 8px #4ade80;
+}
+
+/* CONNECT */
+.connect-box{
+  margin-top:20px;
+  display:flex;
+  gap:10px;
+}
+
+.connect-box input{
+  flex:1;
+  background:#1a1a1a;
+  border:1px solid var(--border);
+  padding:10px;
+  border-radius:10px;
+  color:#fff;
+  font-size:14px;
+}
+
+.connect-box button{
+  padding:10px 16px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:transparent;
+  color:#fff;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+.connect-box button:hover{
+  border-color:#555;
+}
+
+/* CARD */
+.card{
+  background:linear-gradient(145deg,#141414,#0f0f0f);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:18px;
+  margin-bottom:18px;
+  transition:0.3s;
+}
+
+/* ACTIVE STATES */
+.card.on-heat{
+  border-color:var(--heat);
+  box-shadow:0 0 20px rgba(255,122,26,0.2);
+}
+
+.card.on-vib{
+  border-color:var(--vib);
+  box-shadow:0 0 20px rgba(76,201,240,0.2);
+}
+
+/* CARD HEADER */
+.card-hdr{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.card-id{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.icon-box{
+  width:34px;
+  height:34px;
+  border-radius:10px;
+  background:#1c1c1c;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:18px;
+}
+
+.card-name{
+  font-family:'Syne', sans-serif;
+  font-size:15px;
+}
+
+.card-state{
+  font-size:11px;
+  color:var(--muted);
+}
+
+/* TEMP */
+.temp-big{
+  margin-top:15px;
+  display:flex;
+  align-items:center;
+}
+
+.temp-num{
+  font-size:42px;
+  font-weight:800;
+  font-family:'Syne', sans-serif;
+}
+
+.temp-sym{
+  margin-left:5px;
+  color:var(--muted);
+}
+
+/* SLIDER */
+input[type=range]{
+  width:100%;
+  margin-top:15px;
+  appearance:none;
+  height:2px;
+  background:#333;
+}
+
+input[type=range]::-webkit-slider-thumb{
+  appearance:none;
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:#aaa;
+  cursor:pointer;
+}
+
+/* PRESET BUTTONS */
+.presets{
+  margin-top:15px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.presets button{
+  flex:1;
+  background:transparent;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:10px;
+  font-size:11px;
+  color:#ccc;
+}
+
+.presets button:hover{
+  border-color:#555;
+}
+
+/* TOGGLE */
+.tog{
+  width:50px;
+  height:24px;
+  position:relative;
+}
+
+.tog input{
+  display:none;
+}
+
+.tog-track{
+  background:#2a2a2a;
+  border-radius:20px;
+  width:100%;
+  height:100%;
+  position:absolute;
+}
+
+.tog-knob{
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  background:#777;
+  position:absolute;
+  top:3px;
+  left:4px;
+  transition:0.2s;
+}
+
+.tog input:checked ~ .tog-track .tog-knob{
+  left:26px;
+  background:#fff;
+}
+
+/* VIB BUTTONS */
+.vib-modes{
+  margin-top:15px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.vib-modes button{
+  padding:12px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:transparent;
+  color:#aaa;
+}
+
+/* LOG */
+.log-card{
+  background:#111;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:12px;
+}
+
+.log-title{
+  font-size:10px;
+  color:#777;
+  margin-bottom:8px;
+}
+
+.log-scroll{
+  max-height:100px;
+  overflow-y:auto;
+}
+
+.log-line{
+  font-size:11px;
+  color:#aaa;
+  margin-bottom:4px;
+}
+
+/* RESPONSIVE */
+@media(max-width:480px){
+  .temp-num{
+    font-size:34px;
+  }
+}

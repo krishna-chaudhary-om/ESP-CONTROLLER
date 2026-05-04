@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ESP32 Controller</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+<div class="wrap">
+
+  <!-- HEADER -->
+  <div class="hdr">
+    <div>
+      <div class="page-title">ESP32 / CONTROLLER V1.0</div>
+      <div class="page-sub">thermal + vibration module</div>
+    </div>
+
+    <div class="chip-badge">
+      <span class="chip-dot" id="liveDot"></span>
+      <span id="liveLabel">DISCONNECTED</span>
+    </div>
+  </div>
+
+  <!-- CONNECT -->
+  <div class="connect-box">
+    <input type="text" id="espIp" placeholder="192.168.4.1">
+    <button onclick="connectESP()">CONNECT</button>
+  </div>
+
+  <!-- HEATING -->
+  <div class="card" id="heatCard">
+    <div class="card-hdr">
+
+      <div class="card-id">
+        <div class="icon-box">🔥</div>
+        <div>
+          <div class="card-name">Heating Pad</div>
+          <div class="card-state" id="heatState">STATUS: OFF</div>
+        </div>
+      </div>
+
+      <label class="tog">
+        <input type="checkbox" id="heatSwitch" onchange="toggleHeat()">
+        <div class="tog-track">
+          <div class="tog-knob"></div>
+        </div>
+      </label>
+
+    </div>
+
+    <!-- TEMP -->
+    <div class="temp-big">
+      <span class="temp-num" id="tempNum">--</span>
+      <span class="temp-sym">°C</span>
+    </div>
+
+    <!-- SLIDER -->
+    <input type="range" id="tempSlider"
+      min="20" max="40" value="30"
+      disabled
+      oninput="onTempSlide(this.value)"
+      onchange="commitTemp(this.value)">
+
+    <!-- PRESETS -->
+    <div class="presets">
+      <button onclick="applyPreset(20)">20°C — COOL</button>
+      <button onclick="applyPreset(30)">30°C — WARM</button>
+      <button onclick="applyPreset(35)">35°C — HOT</button>
+      <button onclick="applyPreset(40)">40°C — MAX</button>
+    </div>
+  </div>
+
+  <!-- VIBRATION -->
+  <div class="card" id="vibCard">
+    <div class="card-hdr">
+
+      <div class="card-id">
+        <div class="icon-box">📳</div>
+        <div>
+          <div class="card-name">Vibration Motor</div>
+          <div class="card-state" id="vibState">STATUS: OFF</div>
+        </div>
+      </div>
+
+      <label class="tog">
+        <input type="checkbox" id="vibSwitch" onchange="toggleVib()">
+        <div class="tog-track">
+          <div class="tog-knob"></div>
+        </div>
+      </label>
+
+    </div>
+
+    <div class="vib-modes">
+      <button onclick="setMode('LOW',25)">LOW — 25%</button>
+      <button onclick="setMode('MED',50)">MED — 50%</button>
+      <button onclick="setMode('HIGH',75)">HIGH — 75%</button>
+      <button onclick="setMode('MAX',100)">MAX — 100%</button>
+    </div>
+  </div>
+
+  <!-- LOG -->
+  <div class="log-card">
+    <div class="log-title">ACTIVITY LOG</div>
+    <div class="log-scroll">
+      <div id="logOut"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- JS -->
+<script src="script.js"></script>
+
+</body>
