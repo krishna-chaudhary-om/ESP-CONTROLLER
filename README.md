@@ -142,7 +142,8 @@ Relay / Motor Control
 
 ## 📸 UI Preview
 
-*(Add your screenshot here)*
+<img width="904" height="913" alt="image" src="https://github.com/user-attachments/assets/ad458f5a-5c5b-4981-a807-d67453760cea" />
+
 
 ```markdown
 ![UI](./screenshot.png)
